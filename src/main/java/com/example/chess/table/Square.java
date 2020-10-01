@@ -5,12 +5,25 @@ import com.example.chess.pieces.Piece;
 public class Square {
     private int x;
     private int y;
+
     private Piece piece;
 
-    public Square(int x, int y, Piece piece) {
+    private boolean taken = false;
+
+    public boolean getTaken(){
+        return taken;
+    }
+
+    public void setTaken(boolean taken){
+        this.taken = taken;
+    }
+
+    public Square() {
+    }
+
+    public Square(int x, int y) {
         this.x = x;
         this.y = y;
-        this.piece = piece;
     }
 
     public int getX() {
@@ -36,4 +49,5 @@ public class Square {
     public void setPiece(Piece piece) {
         this.piece = piece;
     }
+
 }

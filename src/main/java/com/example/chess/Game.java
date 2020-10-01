@@ -4,7 +4,6 @@ import com.example.chess.pieces.Piece;
 import com.example.chess.table.Board;
 import com.example.chess.table.Square;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,13 +38,15 @@ public class Game {
 
         if (sourcePiece == null) return false;
 
-        if (sourcePiece.canMove(board, move.getStart(), move.getEnd())) {
+        if (move.getEnd().getTaken()) return false;
+
+        if (!sourcePiece.canMove(board, move.getStart(), move.getEnd())) {
             return false;
         }
 
         movesPlayed.add(move);
-
         move.getEnd().setPiece(sourcePiece);
+        move.getStart().setTaken(true);
         move.getStart().setPiece(null);
         return true;
     }
