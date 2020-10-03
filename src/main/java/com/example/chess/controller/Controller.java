@@ -25,7 +25,7 @@ public class Controller {
 
     @PostMapping("/start")
     @CrossOrigin("*")
-    public String getKnight() throws JsonProcessingException {
+    public String start() throws JsonProcessingException {
         game.init();
         return jsonDeserializer.boardAsJson(game.getBoard());
     }
