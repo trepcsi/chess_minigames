@@ -3,14 +3,14 @@ package com.example.chess;
 import com.example.chess.pieces.Piece;
 import com.example.chess.table.Board;
 import com.example.chess.table.Square;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class Game {
 
-    @Autowired
     private Board board;
 
     private List<Move> movesPlayed;
@@ -18,10 +18,9 @@ public class Game {
     public Game() {
         board = new Board();
         movesPlayed = new ArrayList<>();
-        init();
     }
 
-    private void init() {
+    public void init() {
         board.resetBoard();
         movesPlayed.clear();
     }

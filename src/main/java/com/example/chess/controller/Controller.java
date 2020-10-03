@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
 
+    @Autowired
     Game game;
 
     @Autowired
@@ -25,7 +26,7 @@ public class Controller {
     @PostMapping("/start")
     @CrossOrigin("*")
     public String getKnight() throws JsonProcessingException {
-        game = new Game();
+        game.init();
         return jsonDeserializer.boardAsJson(game.getBoard());
     }
 
