@@ -1,4 +1,4 @@
-package com.example.chess.table;
+package com.example.chess.jsonmagic;
 
 public class MoveDto {
     private int x;
@@ -13,13 +13,5 @@ public class MoveDto {
 
     public int getY() {
         return y;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 }

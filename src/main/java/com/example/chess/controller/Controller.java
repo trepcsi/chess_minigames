@@ -3,7 +3,7 @@ package com.example.chess.controller;
 import com.example.chess.Game;
 import com.example.chess.jsonmagic.JsonDeserializer;
 import com.example.chess.jsonmagic.JsonSerializer;
-import com.example.chess.table.MoveDto;
+import com.example.chess.jsonmagic.MoveDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
