@@ -45,7 +45,7 @@ public class Game {
 
         movesPlayed.add(move);
         move.getEnd().setPiece(sourcePiece);
-        move.getEnd().setFree(false);
+        move.getStart().setFree(false);
         move.getStart().setPiece(null);
         return true;
     }

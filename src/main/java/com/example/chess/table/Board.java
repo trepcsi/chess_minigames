@@ -22,7 +22,6 @@ public class Board {
             }
         }
         chessTable[START_X][START_Y].setPiece(new Knight(true));
-        chessTable[START_X][START_Y].setFree(false);
     }
 
     public Square getSquare(int x, int y) {
