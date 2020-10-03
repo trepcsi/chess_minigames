@@ -30,12 +30,11 @@ public class Controller {
     }
 
 
-
     @PostMapping("/move")
     @CrossOrigin("*")
     public String move(@RequestBody String playerMoves) throws JsonProcessingException {
         MoveDto[] m = jsonSerializer.jsonToMoves(playerMoves);
-        game.playerMove(m[0].getX(),m[0].getY(),m[1].getX(),m[1].getY());
+        game.playerMove(m[0].getX(), m[0].getY(), m[1].getX(), m[1].getY());
         return jsonDeserializer.boardAsJson(game.getBoard());
 
     }

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-    public ObjectMapper objectMapper (){
+    public ObjectMapper objectMapper() {
         return new ObjectMapper();
     }
 }
