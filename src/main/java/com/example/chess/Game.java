@@ -38,7 +38,7 @@ public class Game {
 
         if (sourcePiece == null) return false;
 
-        if (move.getEnd().getTaken()) return false;
+        if (!move.getEnd().isFree()) return false;
 
         if (!sourcePiece.canMove(board, move.getStart(), move.getEnd())) {
             return false;
@@ -46,7 +46,7 @@ public class Game {
 
         movesPlayed.add(move);
         move.getEnd().setPiece(sourcePiece);
-        move.getStart().setTaken(true);
+        move.getEnd().setFree(false);
         move.getStart().setPiece(null);
         return true;
     }

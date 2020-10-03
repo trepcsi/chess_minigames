@@ -8,14 +8,14 @@ public class Square {
 
     private Piece piece;
 
-    private boolean taken = false;
+    private boolean free = true;
 
-    public boolean getTaken(){
-        return taken;
+    public boolean isFree(){
+        return free;
     }
 
-    public void setTaken(boolean taken){
-        this.taken = taken;
+    public void setFree(boolean free){
+        this.free = free;
     }
 
     public Square() {
