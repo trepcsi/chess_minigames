@@ -27,4 +27,8 @@ public class JsonDeserializer {
         }
         return objectMapper.writeValueAsString(squareList);
     }
+
+    public String statusAsJson(String status) throws JsonProcessingException {
+        return objectMapper.writeValueAsString(status);
+    }
 }

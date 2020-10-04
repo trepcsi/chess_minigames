@@ -6,10 +6,7 @@ import com.example.chess.jsonmagic.JsonSerializer;
 import com.example.chess.jsonmagic.MoveDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class Controller {
@@ -38,5 +35,11 @@ public class Controller {
         game.playerMove(m[0].getX(), m[0].getY(), m[1].getX(), m[1].getY());
         return jsonDeserializer.boardAsJson(game.getBoard());
 
+    }
+
+    @GetMapping("/status")
+    @CrossOrigin("*")
+    public String getStatus() throws JsonProcessingException {
+        return jsonDeserializer.statusAsJson(game.getStatus());
     }
 }

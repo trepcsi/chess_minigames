@@ -11,6 +11,8 @@ import java.util.List;
 @Service
 public class Game {
 
+    private GameStatus status;
+
     private Board board;
 
     private List<Move> movesPlayed;
@@ -23,6 +25,7 @@ public class Game {
     public void init() {
         board.resetBoard();
         movesPlayed.clear();
+        status = GameStatus.IN_PROGRESS;
     }
 
     public boolean playerMove(int fromX, int fromY, int toX, int toY) {
@@ -36,9 +39,7 @@ public class Game {
         Piece sourcePiece = move.getStart().getPiece();
 
         if (sourcePiece == null) return false;
-
         if (!move.getEnd().isFree()) return false;
-
         if (!sourcePiece.canMove(board, move.getStart(), move.getEnd())) {
             return false;
         }
@@ -47,10 +48,46 @@ public class Game {
         move.getEnd().setPiece(sourcePiece);
         move.getStart().setFree(false);
         move.getStart().setPiece(null);
+
+        refreshStatus(move.getEnd());
         return true;
+    }
+
+    private void refreshStatus(Square fromSquare) {
+        if (movesPlayed.size() == 30) {
+            status = GameStatus.WON;
+        }
+        if (!hasLegalMove(fromSquare)) {
+            status = GameStatus.LOST;
+        }
+    }
+
+    private boolean hasLegalMove(Square fromSquare) {
+        for (int i = 0; i < board.getChessTable().length; i++) {
+            for (int j = 0; j < board.getChessTable()[0].length; j++) {
+                Square toSquare = board.getSquare(i, j);
+                if (toSquare.isFree()) {
+                    if (fromSquare.getPiece().canMove(board, fromSquare, toSquare)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        System.out.println("lost");
+        return false;
     }
 
     public Board getBoard() {
         return board;
+    }
+
+    public String getStatus() {
+        return status.toString();
+    }
+
+    private enum GameStatus {
+        IN_PROGRESS,
+        LOST,
+        WON
     }
 }
