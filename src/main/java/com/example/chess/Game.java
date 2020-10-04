@@ -49,12 +49,13 @@ public class Game {
         move.getStart().setFree(false);
         move.getStart().setPiece(null);
 
+        System.out.println(movesPlayed.size());
         refreshStatus(move.getEnd());
         return true;
     }
 
     private void refreshStatus(Square fromSquare) {
-        if (movesPlayed.size() == 64) {
+        if (movesPlayed.size() == 64 - 1) {
             status = GameStatus.WON;
             return;
         }
