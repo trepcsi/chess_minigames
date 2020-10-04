@@ -29,6 +29,6 @@ public class JsonDeserializer {
     }
 
     public String statusAsJson(String status) throws JsonProcessingException {
-        return objectMapper.writeValueAsString(status);
+        return "{\"status\":\""+status+"\"}";
     }
 }
