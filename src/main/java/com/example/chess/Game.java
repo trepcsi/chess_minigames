@@ -25,7 +25,7 @@ public class Game {
     public void init() {
         board.resetBoard();
         movesPlayed.clear();
-        status = GameStatus.IN_PROGRESS;
+        status = GameStatus.IN_GAME;
     }
 
     public boolean playerMove(int fromX, int fromY, int toX, int toY) {
@@ -73,7 +73,6 @@ public class Game {
                 }
             }
         }
-        System.out.println("lost");
         return false;
     }
 
@@ -86,7 +85,7 @@ public class Game {
     }
 
     private enum GameStatus {
-        IN_PROGRESS,
+        IN_GAME,
         LOST,
         WON
     }
