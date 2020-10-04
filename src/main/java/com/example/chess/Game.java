@@ -56,6 +56,7 @@ public class Game {
     private void refreshStatus(Square fromSquare) {
         if (movesPlayed.size() == 64) {
             status = GameStatus.WON;
+            return;
         }
         if (!hasLegalMove(fromSquare)) {
             status = GameStatus.LOST;
