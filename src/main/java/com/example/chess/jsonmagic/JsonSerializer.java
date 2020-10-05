@@ -1,5 +1,6 @@
 package com.example.chess.jsonmagic;
 
+import com.example.chess.Game;
 import com.example.chess.table.Board;
 import com.example.chess.table.Square;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -28,7 +29,7 @@ public class JsonSerializer {
         return objectMapper.writeValueAsString(squareList);
     }
 
-    public String statusAsJson(String status) throws JsonProcessingException {
-        return "{\"status\":\""+status+"\"}";
+    public String statusAsJson(Game game) throws JsonProcessingException {
+        return objectMapper.writeValueAsString(game);
     }
 }

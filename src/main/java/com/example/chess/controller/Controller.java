@@ -40,7 +40,7 @@ public class Controller {
     @GetMapping("/status")
     @CrossOrigin("*")
     public String getStatus() throws JsonProcessingException {
-        return jsonSerializer.statusAsJson(game.getStatus());
+        return jsonSerializer.statusAsJson(game);
     }
 
     @PostMapping("/back")

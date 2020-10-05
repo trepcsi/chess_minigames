@@ -3,11 +3,15 @@ package com.example.chess;
 import com.example.chess.pieces.Piece;
 import com.example.chess.table.Board;
 import com.example.chess.table.Square;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonIgnoreProperties(value = {
+        "board", "movesPlayed"
+})
 @Service
 public class Game {
 
