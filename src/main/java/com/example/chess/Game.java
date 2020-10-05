@@ -35,6 +35,15 @@ public class Game {
         return this.makeMove(move);
     }
 
+    public void backMove(){
+        Move lastMove = movesPlayed.get(movesPlayed.size()-1);
+        lastMove.getStart().setFree(true);
+        lastMove.getStart().setPiece(lastMove.getEnd().getPiece());
+        lastMove.getEnd().setPiece(null);
+        movesPlayed.remove(lastMove);
+        status = GameStatus.IN_GAME;
+    }
+
     private boolean makeMove(Move move) {
         Piece sourcePiece = move.getStart().getPiece();
 
@@ -49,7 +58,6 @@ public class Game {
         move.getStart().setFree(false);
         move.getStart().setPiece(null);
 
-        System.out.println(movesPlayed.size());
         refreshStatus(move.getEnd());
         return true;
     }

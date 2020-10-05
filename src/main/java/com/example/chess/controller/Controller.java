@@ -42,4 +42,11 @@ public class Controller {
     public String getStatus() throws JsonProcessingException {
         return jsonDeserializer.statusAsJson(game.getStatus());
     }
+
+    @PostMapping("/back")
+    @CrossOrigin("*")
+    public String moveBack() throws JsonProcessingException {
+        game.backMove();
+        return jsonDeserializer.boardAsJson(game.getBoard());
+    }
 }
