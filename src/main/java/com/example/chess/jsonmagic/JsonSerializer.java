@@ -32,4 +32,8 @@ public class JsonSerializer {
     public String statusAsJson(Game game) throws JsonProcessingException {
         return objectMapper.writeValueAsString(game);
     }
+
+    public String solutionAsJson(List<Square> moves) throws JsonProcessingException {
+        return objectMapper.writeValueAsString(moves);
+    }
 }

@@ -31,4 +31,16 @@ public class Board {
     public Square[][] getChessTable() {
         return chessTable;
     }
+
+    public int numberOfMissing() {
+        int result = 0;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if (chessTable[i][j].isFree()) {
+                    result++;
+                }
+            }
+        }
+        return result;
+    }
 }

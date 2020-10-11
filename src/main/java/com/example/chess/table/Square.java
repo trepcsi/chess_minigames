@@ -10,11 +10,11 @@ public class Square {
 
     private boolean free = true;
 
-    public boolean isFree(){
+    public boolean isFree() {
         return free;
     }
 
-    public void setFree(boolean free){
+    public void setFree(boolean free) {
         this.free = free;
     }
 
@@ -42,4 +42,11 @@ public class Square {
         this.piece = piece;
     }
 
+    @Override
+    public String toString() {
+        return "Square{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }

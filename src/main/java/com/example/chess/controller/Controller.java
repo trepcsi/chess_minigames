@@ -1,9 +1,10 @@
 package com.example.chess.controller;
 
 import com.example.chess.Game;
-import com.example.chess.jsonmagic.JsonSerializer;
 import com.example.chess.jsonmagic.JsonDeserializer;
+import com.example.chess.jsonmagic.JsonSerializer;
 import com.example.chess.jsonmagic.MoveDto;
+import com.example.chess.solve.BoardGraph;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,8 @@ public class Controller {
 
     @Autowired
     Game game;
+
+    BoardGraph b;
 
     @Autowired
     JsonSerializer jsonSerializer;
@@ -48,5 +51,13 @@ public class Controller {
     public String moveBack() throws JsonProcessingException {
         game.backMove();
         return jsonSerializer.boardAsJson(game.getBoard());
+    }
+
+    @GetMapping("/solve")
+    @CrossOrigin("*")
+    public String solve() throws Exception {
+        b = new BoardGraph(game.getBoard());
+        System.out.println(b.findHamiltonianPath());
+        return jsonSerializer.solutionAsJson(b.getMoves());
     }
 }
